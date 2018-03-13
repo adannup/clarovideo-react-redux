@@ -20,6 +20,7 @@ class App extends Component {
     this.filterSearchState = this.filterSearchState.bind(this);
     this.onChangeSearch = this.onChangeSearch.bind(this);
     this.onClickItemDetail = this.onClickItemDetail.bind(this);
+    this.onCloseItemDetails = this.onCloseItemDetails.bind(this);
   }
 
   componentWillMount() {
@@ -84,6 +85,15 @@ class App extends Component {
       }));
   }
 
+  onCloseItemDetails() {
+    this.setState({
+      itemDetails: {
+        isOpen: false,
+        item: {},
+      },
+    });
+  }
+
   filterSearchState() {
     let query = this.state.searchQuery;
 
@@ -105,6 +115,7 @@ class App extends Component {
         {this.state.itemDetails.isOpen ?
           <ItemDetails
             item={this.state.itemDetails.item}
+            onCloseItemDetails={this.onCloseItemDetails}
           /> :
           <div className="container">
             <FilterSearch

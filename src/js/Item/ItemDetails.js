@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { faArrowAltCircleLeft } from '@fortawesome/fontawesome-free-solid';
 import './styles/ItemDetails.scss';
+import './styles/Buttons.scss';
 
-const ItemDetails = ({ item }) => {
+const ItemDetails = ({ item, onCloseItemDetails }) => {
   const genreList = item.extendedcommon.genres.genre.map(genre => genre.desc).join(', ');
 
   const roleList = item.extendedcommon.roles.role.map(role => (
@@ -13,27 +16,36 @@ const ItemDetails = ({ item }) => {
     </div>
   ));
   return (
-    <div className="card-view" style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.9) 100%), url('${item.image_large}')` }}>
-      <div className="card-view__header">
-        <h1>{item.title}</h1>
-      </div>
-      <div className="card-view__body">
-        <div className="card-view__poster">
-          <img src={item.image_large} alt={item.title} />
+    <div>
+      <button className="btn-return" onClick={onCloseItemDetails}>
+        <FontAwesomeIcon
+          className="icon_return"
+          icon="arrow-alt-circle-left"
+        />
+        <span>regresar</span>
+      </button>
+      <div className="card-view" style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.9) 100%), url('${item.image_large}')` }}>
+        <div className="card-view__header">
+          <h1>{item.title}</h1>
         </div>
-        <div className="card-view__details">
-          <div className="card-view__details-shortinfo">
-            <span>{item.title} ({item.extendedcommon.media.publishyear})</span>
-            <span>{item.duration}</span>
-            <span>{item.extendedcommon.media.rating.code}</span>
+        <div className="card-view__body">
+          <div className="card-view__poster">
+            <img src={item.image_large} alt={item.title} />
           </div>
-          <div className="card-view__details-full-description">
-            <p>{item.description_large}</p>
-          </div>
-          <div className="card-view__details-collaborators">
-            <span><b>Género: </b>{genreList}</span>
-            {roleList}
-            <span><b>Título Original: </b>{item.title}</span>
+          <div className="card-view__details">
+            <div className="card-view__details-shortinfo">
+              <span>{item.title} ({item.extendedcommon.media.publishyear})</span>
+              <span>{item.duration}</span>
+              <span>{item.extendedcommon.media.rating.code}</span>
+            </div>
+            <div className="card-view__details-full-description">
+              <p>{item.description_large}</p>
+            </div>
+            <div className="card-view__details-collaborators">
+              <span><b>Género: </b>{genreList}</span>
+              {roleList}
+              <span><b>Título Original: </b>{item.title}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -42,6 +54,7 @@ const ItemDetails = ({ item }) => {
 };
 
 ItemDetails.propTypes = {
+  onCloseItemDetails: PropTypes.func.isRequired,
   item: PropTypes.objectOf(PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
