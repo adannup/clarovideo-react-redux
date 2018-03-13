@@ -10,10 +10,11 @@ const ItemTooltip = ({
   title_uri,
   votes_average,
   id,
+  onHandleItemDetail,
 }) => (
   <div className="item__tooltip">
     <div className="item__tooltip__Header">
-      <a href={`https://www.clarovideo.com/mexico/vcard/tercernivel/${title_uri}/${id}`}><h3 className="item__tooltip_title">{title}</h3></a>
+      <h3 className="item__tooltip_title">{title}</h3>
       <span>{year}</span>
       <span>{duration}</span>
       <span>{votes_average}</span>
@@ -23,12 +24,13 @@ const ItemTooltip = ({
       <p>{children}</p>
     </div>
     <div className="item__tooltip__Footer">
-      <span className="tooltip_details"><a href={`https://www.clarovideo.com/mexico/vcard/tercernivel/${title_uri}/${id}`}>Ver Detalles</a></span>
+      <button className="tooltip_details" onClick={() => onHandleItemDetail()}>Ver Detalles</button>
     </div>
   </div>
 );
 
 ItemTooltip.propTypes = {
+  onHandleItemDetail: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   year: PropTypes.string.isRequired,
   duration: PropTypes.string.isRequired,

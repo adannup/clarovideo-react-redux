@@ -60,6 +60,7 @@ class Item extends Component {
             duration={this.props.duration}
             rating_code={this.props.rating_code}
             votes_average={this.props.votes_average}
+            onHandleItemDetail={this.onHandleItemDetail}
           >
             <b>Sinopsis:</b>
             {this.props.description_large}

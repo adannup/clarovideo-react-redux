@@ -103,9 +103,12 @@
   min-height: 58px;
 }
 
-.item__tooltip__Footer a {
+.item__tooltip button {
   color: #FFF;
   text-decoration: none;
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 
 .item__tooltip__Footer .tooltip_details {
