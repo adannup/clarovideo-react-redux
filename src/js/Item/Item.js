@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ItemTooltip from './ItemTooltip';
 
 class Item extends Component {
@@ -54,5 +55,17 @@ class Item extends Component {
     );
   }
 }
+
+Item.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  year: PropTypes.string.isRequired,
+  title_uri: PropTypes.string.isRequired,
+  duration: PropTypes.string.isRequired,
+  rating_code: PropTypes.string.isRequired,
+  votes_average: PropTypes.number.isRequired,
+  description_large: PropTypes.string.isRequired,
+  image_small: PropTypes.string.isRequired,
+};
 
 export default Item;
