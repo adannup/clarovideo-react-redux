@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { ItemList } from './Item';
 import FilterSearch from './Filter/FilterSearch';
 import fetchData from './Utils';
+import './App.scss';
 
 class App extends Component {
   constructor() {
@@ -68,16 +69,16 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="container">
-          <FilterSearch
-            onFormSubmit={this.onFormSubmit}
-            onChangeSearch={this.onChangeSearch}
+      <div className="container">
+        <FilterSearch
+          onFormSubmit={this.onFormSubmit}
+          onChangeSearch={this.onChangeSearch}
+        />
+        <div className="mt-3">
+          <ItemList
+            groups={this.filterSearchState()}
           />
         </div>
-        <ItemList
-          groups={this.filterSearchState()}
-        />
       </div>
     );
   }

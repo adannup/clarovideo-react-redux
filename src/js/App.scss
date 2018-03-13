@@ -1,0 +1,16 @@
+// margin variable
+$margin: 1.25em;
+
+body {
+  background: #000;
+  font-family: sans-serif;
+}
+
+.container {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.mt-3 {
+  margin-top: $margin * 3;
+}
