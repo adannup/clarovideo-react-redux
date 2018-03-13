@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Item from './Item';
+import './styles/ItemList.scss';
 
 const ItemList = ({ groups }) => {
   const itemList = groups.map(g => (
@@ -20,7 +21,7 @@ const ItemList = ({ groups }) => {
   ));
 
   return (
-    <div className="container-items">
+    <div className="items__container">
       {itemList}
     </div>
   );

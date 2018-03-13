@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { faPlayCircle } from '@fortawesome/fontawesome-free-solid';
 import ItemTooltip from './ItemTooltip';
+import './styles/Item.scss';
 
 class Item extends Component {
   constructor(props) {
@@ -36,6 +39,12 @@ class Item extends Component {
         <img src={this.props.image_small} alt={this.props.title} />
         <div className="item__title">
           <p className="item__title_p">{this.props.title}</p>
+        </div>
+        <div className="item__play">
+          <FontAwesomeIcon
+            className="item__play_icon"
+            icon="play-circle"
+          />
         </div>
         {this.state.isHover &&
           <ItemTooltip

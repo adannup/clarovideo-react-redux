@@ -1,0 +1,119 @@
+.item-wrapper {
+  display: inline-block;
+  position: relative;
+  height: 163px;
+  width: 290px;
+  margin: auto;  /* Magic! */
+  margin-bottom: 20px;
+
+  &:hover {
+    .item__play {
+      background: rgba(34,34,34,.5);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: 9999;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .item__play_icon {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 5em;
+      left: 35%;
+      top: 20%;
+      position: absolute;
+    }
+  }
+}
+
+.item-wrapper img {
+  width: 100%;
+}
+
+.item__title {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: -webkit-linear-gradient(bottom, #000, transparent);
+}
+
+.item__title_p {
+  color: #f2f2f2;
+  font-size: 14px;
+  font-family: arial, sans-serif;
+  margin-left: 10px;
+  word-wrap: break-word;
+}
+
+.item__tooltip {
+  background: #232323;
+  display: block;
+  position: relative;
+  left: 0;
+  z-index: 9999;
+  width: 330px;
+}
+
+.item__tooltip__Header {
+  color: #FFF;
+}
+
+.item__tooltip__Header span {
+  font-size: 14px;
+  padding: 0 10px;
+}
+
+.item__tooltip_title {
+  color: #FFF;
+  font-family: arial, sans-serif;
+  font-size: 1.17em;
+  font-weight: 300;
+  margin: 1em 0;
+  padding: 10px;
+}
+
+.item__tooltip a {
+  text-decoration-color: #fff;
+}
+
+.item__tooltip__Info {
+  background: #FFF;
+  padding: 10px;
+}
+
+.item__tooltip_rating {
+  margin: 10px;
+  background: 0 0;
+  border-radius: 0;
+  border: 1px solid #f2f2f2;
+  color: #F2F2F2!important;
+  display: inline-block;
+  padding: 1px 5px;
+  font-size: 10.5px;
+  font-weight: 700;
+}
+
+.item__tooltip__Footer {
+  padding: 10px;
+  position: relative;
+  min-height: 58px;
+}
+
+.item__tooltip__Footer a {
+  color: #FFF;
+  text-decoration: none;
+}
+
+.item__tooltip__Footer .tooltip_details {
+  border: 1px solid #fff;
+  font-size: 14px;
+  margin: 10px;
+  width: auto;
+  border-radius: 5px;
+  padding: 8px;
+  position: absolute;
+  right: 0;
+}
