@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { ItemList, ItemDetails } from './Item';
 import FilterSearch from './Filter/FilterSearch';
 import fetchData from './Utils';
+import Loading from './Load';
 import './App.scss';
 
 class App extends Component {
@@ -9,6 +10,7 @@ class App extends Component {
     super();
 
     this.state = {
+      isFetched: false,
       groups: [],
       searchQuery: '',
       itemDetails: {
@@ -48,6 +50,7 @@ class App extends Component {
     fetchData(uri, params)
       .then(data => data.response.groups)
       .then(groups => this.setState({
+        isFetched: true,
         groups,
       }));
   }
@@ -75,9 +78,14 @@ class App extends Component {
       group_id: id,
     };
 
+    this.setState({
+      isFetched: false,
+    });
+
     fetchData(uri, params)
       .then(data => data.response.group.common)
       .then(item => this.setState({
+        isFetched: true,
         itemDetails: {
           isOpen: true,
           item,
@@ -112,23 +120,28 @@ class App extends Component {
   render() {
     return (
       <div>
-        {this.state.itemDetails.isOpen ?
-          <ItemDetails
-            item={this.state.itemDetails.item}
-            onCloseItemDetails={this.onCloseItemDetails}
-          /> :
-          <div className="container">
-            <FilterSearch
-              onFormSubmit={this.onFormSubmit}
-              onChangeSearch={this.onChangeSearch}
-            />
-            <div className="mt-3">
-              <ItemList
-                groups={this.filterSearchState()}
-                onClickItemDetail={this.onClickItemDetail}
-              />
-            </div>
-          </div>
+        {this.state.isFetched ?
+          <div>
+            {this.state.itemDetails.isOpen ?
+              <ItemDetails
+                item={this.state.itemDetails.item}
+                onCloseItemDetails={this.onCloseItemDetails}
+              /> :
+              <div className="container">
+                <FilterSearch
+                  onFormSubmit={this.onFormSubmit}
+                  onChangeSearch={this.onChangeSearch}
+                />
+                <div className="mt-3">
+                  <ItemList
+                    groups={this.filterSearchState()}
+                    onClickItemDetail={this.onClickItemDetail}
+                  />
+                </div>
+              </div>
+            }
+          </div> :
+          <Loading />
         }
       </div>
     );
