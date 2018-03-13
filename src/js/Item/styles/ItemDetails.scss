@@ -53,8 +53,13 @@
   color: #fff;
 }
 
-.card-view__details-collaborators{
-  span {
-    display: block;
-  }
+.collaborators_name {
+  display: inline-block;
+  font-size: 12px;
+  margin: 2px;
+  padding: 2px 4px;
+  width: auto;
+  height: auto;
+  border-radius: 3px;
+  border: 1px solid #fff;
 }
