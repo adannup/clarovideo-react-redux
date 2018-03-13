@@ -11,10 +11,15 @@ class App extends Component {
     this.state = {
       groups: [],
       searchQuery: '',
+      itemDetails: {
+        isOpen: false,
+        item: {},
+      },
     };
 
     this.filterSearchState = this.filterSearchState.bind(this);
     this.onChangeSearch = this.onChangeSearch.bind(this);
+    this.onClickItemDetail = this.onClickItemDetail.bind(this);
   }
 
   componentWillMount() {
@@ -52,6 +57,16 @@ class App extends Component {
     });
   }
 
+  onClickItemDetail(id) {
+    const detailItem = this.state.groups.filter(group => group.id === id);
+    this.setState({
+      itemDetails: {
+        isOpen: true,
+        item: detailItem[0],
+      },
+    });
+  }
+
   filterSearchState() {
     let query = this.state.searchQuery;
 
@@ -77,6 +92,7 @@ class App extends Component {
         <div className="mt-3">
           <ItemList
             groups={this.filterSearchState()}
+            onClickItemDetail={this.onClickItemDetail}
           />
         </div>
       </div>

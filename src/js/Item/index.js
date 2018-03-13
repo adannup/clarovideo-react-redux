@@ -4,4 +4,5 @@ import Item from './Item';
 export {
   ItemList,
   Item,
+  ItemDetails,
 };

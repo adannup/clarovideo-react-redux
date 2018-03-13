@@ -8,6 +8,7 @@
 
   &:hover {
     .item__play {
+      cursor: pointer;
       background: rgba(34,34,34,.5);
       position: absolute;
       bottom: 0;

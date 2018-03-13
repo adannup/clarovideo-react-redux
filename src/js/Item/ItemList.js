@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Item from './Item';
 import './styles/ItemList.scss';
 
-const ItemList = ({ groups }) => {
+const ItemList = ({ groups, onClickItemDetail }) => {
   const itemList = groups.map(g => (
     <Item
       key={g.id}
@@ -17,6 +17,7 @@ const ItemList = ({ groups }) => {
       year={g.year}
       rating_code={g.rating_code}
       votes_average={g.votes_average}
+      onClickItemDetail={onClickItemDetail}
     />
   ));
 
@@ -28,6 +29,7 @@ const ItemList = ({ groups }) => {
 };
 
 ItemList.propTypes = {
+  onClickItemDetail: PropTypes.func.isRequired,
   groups: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string,
     title: PropTypes.string,

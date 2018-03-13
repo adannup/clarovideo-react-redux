@@ -15,6 +15,7 @@ class Item extends Component {
 
     this.onMouseEnterItem = this.onMouseEnterItem.bind(this);
     this.onMouseLeaveItem = this.onMouseLeaveItem.bind(this);
+    this.onHandleItemDetail = this.onHandleItemDetail.bind(this);
   }
 
   onMouseEnterItem() {
@@ -29,6 +30,10 @@ class Item extends Component {
     });
   }
 
+  onHandleItemDetail() {
+    this.props.onClickItemDetail(this.props.id);
+  }
+
   render() {
     return (
       <div
@@ -40,7 +45,7 @@ class Item extends Component {
         <div className="item__title">
           <p className="item__title_p">{this.props.title}</p>
         </div>
-        <div className="item__play">
+        <div className="item__play" onClick={this.onHandleItemDetail} role="button" tabIndex="0" onKeyDown={() => {}}>
           <FontAwesomeIcon
             className="item__play_icon"
             icon="play-circle"
@@ -66,6 +71,7 @@ class Item extends Component {
 }
 
 Item.propTypes = {
+  onClickItemDetail: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   year: PropTypes.string.isRequired,
