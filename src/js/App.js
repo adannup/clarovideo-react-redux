@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ItemList } from './Item';
+import FilterSearch from './Filter/FilterSearch';
 import fetchData from './Utils';
 
 class App extends Component {
@@ -8,9 +9,11 @@ class App extends Component {
 
     this.state = {
       groups: [],
+      searchQuery: '',
     };
 
     this.filterSearchState = this.filterSearchState.bind(this);
+    this.onChangeSearch = this.onChangeSearch.bind(this);
   }
 
   componentWillMount() {
@@ -42,11 +45,19 @@ class App extends Component {
       }));
   }
 
-  filterSearchState(query = '') {
+  onChangeSearch(e) {
+    this.setState({
+      searchQuery: e.target.value,
+    });
+  }
+
+  filterSearchState() {
+    let query = this.state.searchQuery;
+
     if (query !== '') {
-      const queryLower = query.toLowerCase();
+      query = query.toLowerCase();
       return this.state.groups.filter(group => {
-        if (group.title.toLowerCase().indexOf(queryLower) !== -1) {
+        if (group.title.toLowerCase().indexOf(query) !== -1) {
           return group;
         }
         return false;
@@ -58,6 +69,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <div className="container">
+          <FilterSearch
+            onFormSubmit={this.onFormSubmit}
+            onChangeSearch={this.onChangeSearch}
+          />
+        </div>
         <ItemList
           groups={this.filterSearchState()}
         />
