@@ -6,6 +6,7 @@ const config = require('./webpack.config');
 
 const app = express();
 const compiler = webpack(config);
+const PORT = process.env.PORT || 3000;
 
 app.use(webpackDevMiddleware(compiler, {
   logLevel: 'error',
@@ -15,6 +16,6 @@ app.use(webpackDevMiddleware(compiler, {
 
 app.use(webpackHotMiddleware(compiler));
 
-app.listen(3000, () => {
-  console.log('Server up on port: 3000');
+app.listen(PORT, () => {
+  console.log(`Server up on port: ${PORT}`);
 });
