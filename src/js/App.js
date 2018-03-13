@@ -9,6 +9,8 @@ class App extends Component {
     this.state = {
       groups: [],
     };
+
+    this.filterSearchState = this.filterSearchState.bind(this);
   }
 
   componentWillMount() {
@@ -40,11 +42,24 @@ class App extends Component {
       }));
   }
 
+  filterSearchState(query = '') {
+    if (query !== '') {
+      const queryLower = query.toLowerCase();
+      return this.state.groups.filter(group => {
+        if (group.title.toLowerCase().indexOf(queryLower) !== -1) {
+          return group;
+        }
+        return false;
+      });
+    }
+    return this.state.groups;
+  }
+
   render() {
     return (
       <div className="App">
         <ItemList
-          groups={this.state.groups}
+          groups={this.filterSearchState()}
         />
       </div>
     );
