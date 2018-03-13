@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ItemList } from './Item';
+import { ItemList, ItemDetails } from './Item';
 import FilterSearch from './Filter/FilterSearch';
 import fetchData from './Utils';
 import './App.scss';
@@ -84,17 +84,24 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
-        <FilterSearch
-          onFormSubmit={this.onFormSubmit}
-          onChangeSearch={this.onChangeSearch}
-        />
-        <div className="mt-3">
-          <ItemList
-            groups={this.filterSearchState()}
-            onClickItemDetail={this.onClickItemDetail}
-          />
-        </div>
+      <div>
+        {this.state.itemDetails.isOpen ?
+          <ItemDetails
+            item={this.state.itemDetails.item}
+          /> :
+          <div className="container">
+            <FilterSearch
+              onFormSubmit={this.onFormSubmit}
+              onChangeSearch={this.onChangeSearch}
+            />
+            <div className="mt-3">
+              <ItemList
+                groups={this.filterSearchState()}
+                onClickItemDetail={this.onClickItemDetail}
+              />
+            </div>
+          </div>
+        }
       </div>
     );
   }

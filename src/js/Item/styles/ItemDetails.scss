@@ -1,0 +1,60 @@
+.card-view {
+  background-position: center center;
+  background-size: 100%;
+  padding-bottom: 100px;
+}
+
+.card-view__header h1 {
+  font-family: Arial;
+  font-size: 30px;
+  text-align: left;
+  color: #ecaf2a;
+  margin: 5px 0;
+  font-weight: 300;
+  padding: 24px 14px;
+}
+
+.card-view__body {
+  font-size: 14px;
+  font-family: sans-serif;
+  line-height: 1.42857143;
+}
+
+.card-view__details {
+  width: 40%;
+}
+
+.card-view__poster {
+  width: 33%;
+}
+
+.card-view__details,
+.card-view__poster {
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 14px;
+}
+
+.card-view__poster img {
+  width: 100%;
+}
+
+.card-view__details-shortinfo,
+.card-view__details-full-description {
+  width: 100%;
+}
+
+.card-view__details-shortinfo span {
+  font-weight: 700;
+  margin-right: 15px;
+}
+
+.card-view__details {
+  color: #fff;
+}
+
+.card-view__details-collaborators{
+  span {
+    display: block;
+  }
+}
