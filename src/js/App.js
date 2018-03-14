@@ -126,7 +126,7 @@ class App extends Component {
     console.log('Redux:', this.props);
     return (
       <div>
-        {!this.props.app.isFetching ?
+        {(!this.props.app.isFetching && !this.props.itemDetails.isFetching) ?
           <div>
             {this.props.itemDetails.isOpen ?
               <ItemDetailsContainer

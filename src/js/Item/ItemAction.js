@@ -30,7 +30,12 @@ const onClickItemDetail = itemId => ({
   payload: fetchItemDetail(itemId),
 });
 
+const requestPost = () => ({
+  type: 'REQUEST_POST',
+});
+
 export {
   onCloseItemDetail,
   onClickItemDetail,
+  requestPost,
 };
