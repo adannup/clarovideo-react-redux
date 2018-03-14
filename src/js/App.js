@@ -47,12 +47,17 @@ class App extends Component {
       node_id: '9869',
     };
 
+    // fetchData(uri, params)
+    //   .then(data => data.response.groups)
+    //   .then(groups => this.setState({
+    //     isFetched: true,
+    //     groups,
+    //   }));
+    // this.props.requestData();
+
     fetchData(uri, params)
       .then(data => data.response.groups)
-      .then(groups => this.setState({
-        isFetched: true,
-        groups,
-      }));
+      .then(groups => this.props.fetchDataGroups(groups));
   }
 
   onChangeSearch(e) {
@@ -107,24 +112,25 @@ class App extends Component {
 
     if (query !== '') {
       query = query.toLowerCase();
-      return this.state.groups.filter(group => {
+      return this.props.app.groups.filter(group => {
         if (group.title.toLowerCase().indexOf(query) !== -1) {
           return group;
         }
         return false;
       });
     }
-    return this.state.groups;
+    return this.props.app.groups;
   }
 
   render() {
+    console.log('Redux:', this.props);
     return (
       <div>
-        {this.state.isFetched ?
+        {!this.props.app.isFetching ?
           <div>
-            {this.state.itemDetails.isOpen ?
+            {this.props.itemDetails.isOpen ?
               <ItemDetails
-                item={this.state.itemDetails.item}
+                item={this.props.itemDetails.item}
                 onCloseItemDetails={this.onCloseItemDetails}
               /> :
               <div className="container">

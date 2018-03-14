@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Item from './Item';
+import ItemContainer from './ItemContainer';
 import './styles/ItemList.scss';
 
 const ItemList = ({ groups, onClickItemDetail }) => {
   const itemList = groups.map(g => (
-    <Item
+    <ItemContainer
       key={g.id}
       id={g.id}
       title={g.title}
@@ -17,7 +17,6 @@ const ItemList = ({ groups, onClickItemDetail }) => {
       year={g.year}
       rating_code={g.rating_code}
       votes_average={g.votes_average}
-      onClickItemDetail={onClickItemDetail}
     />
   ));
 
