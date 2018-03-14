@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ItemList, ItemDetails } from './Item';
+import { ItemList, ItemDetailsContainer } from './Item';
 import FilterSearch from './Filter/FilterSearch';
 import fetchData from './Utils';
 import Loading from './Load';
@@ -129,9 +129,8 @@ class App extends Component {
         {!this.props.app.isFetching ?
           <div>
             {this.props.itemDetails.isOpen ?
-              <ItemDetails
+              <ItemDetailsContainer
                 item={this.props.itemDetails.item}
-                onCloseItemDetails={this.onCloseItemDetails}
               /> :
               <div className="container">
                 <FilterSearch

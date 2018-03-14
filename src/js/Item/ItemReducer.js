@@ -11,7 +11,10 @@ const itemReducer = (state = initialState, action) => {
         item: action.payload,
       });
     case 'CLOSE_ITEM_DETAILS':
-      return state;
+      return Object.assign({}, state, {
+        isOpen: false,
+        item: {},
+      });
     default:
       return state;
   }
