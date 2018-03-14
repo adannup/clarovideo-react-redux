@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ItemContainer from './ItemContainer';
 import './styles/ItemList.scss';
 
-const ItemList = ({ groups, onClickItemDetail }) => {
+const ItemList = ({ groups }) => {
   const itemList = groups.map(g => (
     <ItemContainer
       key={g.id}
@@ -28,7 +28,6 @@ const ItemList = ({ groups, onClickItemDetail }) => {
 };
 
 ItemList.propTypes = {
-  onClickItemDetail: PropTypes.func.isRequired,
   groups: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string,
     title: PropTypes.string,
