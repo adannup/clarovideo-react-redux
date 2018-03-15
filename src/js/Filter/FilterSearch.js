@@ -7,10 +7,16 @@ class FilterSearch extends Component {
     super(props);
 
     this.onChangeSearch = this.onChangeSearch.bind(this);
+    this.timeWait = 0;
   }
 
   onChangeSearch(e) {
-    this.props.onFilterSearch(e.target.value);
+    clearTimeout(this.timeWait);
+    const { value } = e.target;
+
+    this.timeWait = setTimeout(() => {
+      this.props.onFilterSearch(value);
+    }, 800);
   }
 
   render() {
