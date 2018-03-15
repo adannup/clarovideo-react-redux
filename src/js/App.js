@@ -61,9 +61,7 @@ class App extends Component {
         {(!this.props.app.isFetching && !this.props.itemDetails.isFetching) ?
           <div>
             {this.props.itemDetails.isOpen ?
-              <ItemDetailsContainer
-                item={this.props.itemDetails.item}
-              /> :
+              <ItemDetailsContainer /> :
               <div className="container">
                 <FilterSearchContainer />
                 <div className="mt-3">

@@ -6,6 +6,10 @@ const mapDispatchToProps = dispatch => ({
   onCloseItemDetails: () => dispatch(onCloseItemDetail()),
 });
 
-const ItemDetailsContainer = connect(undefined, mapDispatchToProps)(ItemDetails);
+const mapStateToProps = state => ({
+  item: state.itemDetails.item,
+});
+
+const ItemDetailsContainer = connect(mapStateToProps, mapDispatchToProps)(ItemDetails);
 
 export default ItemDetailsContainer;
