@@ -9,20 +9,7 @@ class App extends Component {
   constructor() {
     super();
 
-    this.state = {
-      isFetched: false,
-      groups: [],
-      searchQuery: '',
-      itemDetails: {
-        isOpen: false,
-        item: {},
-      },
-    };
-
     this.filterSearchState = this.filterSearchState.bind(this);
-    this.onChangeSearch = this.onChangeSearch.bind(this);
-    this.onClickItemDetail = this.onClickItemDetail.bind(this);
-    this.onCloseItemDetails = this.onCloseItemDetails.bind(this);
   }
 
   componentWillMount() {
@@ -47,64 +34,9 @@ class App extends Component {
       node_id: '9869',
     };
 
-    // fetchData(uri, params)
-    //   .then(data => data.response.groups)
-    //   .then(groups => this.setState({
-    //     isFetched: true,
-    //     groups,
-    //   }));
-    // this.props.requestData();
-
     fetchData(uri, params)
       .then(data => data.response.groups)
       .then(groups => this.props.fetchDataGroups(groups));
-  }
-
-  onChangeSearch(e) {
-    this.setState({
-      searchQuery: e.target.value,
-    });
-  }
-
-  onClickItemDetail(id) {
-    const uri = 'https://mfwkweb-api.clarovideo.net/services/content/data';
-    const params = {
-      api_version: 'v5.8',
-      authpn: 'webclient',
-      authpt: 'tfg1h3j4k6fd7',
-      format: 'json',
-      region: 'mexico',
-      device_id: 'web',
-      device_category: 'web',
-      device_model: 'web',
-      device_type: 'web',
-      device_manufacturer: 'generic',
-      HKS: 'rd1krvbh4b86eajtjargfvj4k3',
-      group_id: id,
-    };
-
-    this.setState({
-      isFetched: false,
-    });
-
-    fetchData(uri, params)
-      .then(data => data.response.group.common)
-      .then(item => this.setState({
-        isFetched: true,
-        itemDetails: {
-          isOpen: true,
-          item,
-        },
-      }));
-  }
-
-  onCloseItemDetails() {
-    this.setState({
-      itemDetails: {
-        isOpen: false,
-        item: {},
-      },
-    });
   }
 
   filterSearchState() {
