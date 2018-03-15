@@ -1,5 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { createLogger } from 'redux-logger';
+// import { createLogger } from 'redux-logger';
 import promise from 'redux-promise-middleware';
 // Reducers
 import appReducer from './AppReducer';
@@ -12,5 +12,7 @@ const reducers = combineReducers({
   filter: filterSearchReducer,
 });
 
-const store = createStore(reducers, {}, applyMiddleware(createLogger(), promise()));
+// const store = createStore(reducers, {}, applyMiddleware(createLogger(), promise()));
+const store = createStore(reducers, {}, applyMiddleware(promise()));
+
 export default store;

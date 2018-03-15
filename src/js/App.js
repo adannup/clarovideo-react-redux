@@ -52,7 +52,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('Redux:', this.props);
     return (
       <div>
         {(!this.props.app.isFetching && !this.props.itemDetails.isFetching) ?
