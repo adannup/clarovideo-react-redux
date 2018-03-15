@@ -22,7 +22,9 @@ const ItemList = ({ groups }) => {
 
   return (
     <div className="items__container">
-      {itemList}
+      {
+        (groups.length > 0) ? itemList : <h1 className="items_title">No se encontraron resultados para su búsqueda</h1>
+      }
     </div>
   );
 };
