@@ -5,6 +5,7 @@ import App from './App';
 const mapStateToProps = state => ({
   app: state.app,
   itemDetails: state.itemDetails,
+  filter: state.filter,
 });
 
 const mapDispatchToProps = dispatch => ({

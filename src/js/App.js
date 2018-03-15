@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ItemList, ItemDetailsContainer } from './Item';
-import FilterSearch from './Filter/FilterSearch';
+import FilterSearchContainer from './Filter/FilterSearchContainer';
 import fetchData from './Utils';
 import Loading from './Load';
 import './App.scss';
@@ -108,7 +108,7 @@ class App extends Component {
   }
 
   filterSearchState() {
-    let query = this.state.searchQuery;
+    let query = this.props.filter.searchQuery;
 
     if (query !== '') {
       query = query.toLowerCase();
@@ -133,10 +133,7 @@ class App extends Component {
                 item={this.props.itemDetails.item}
               /> :
               <div className="container">
-                <FilterSearch
-                  onFormSubmit={this.onFormSubmit}
-                  onChangeSearch={this.onChangeSearch}
-                />
+                <FilterSearchContainer />
                 <div className="mt-3">
                   <ItemList
                     groups={this.filterSearchState()}
