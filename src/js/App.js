@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { ItemList, ItemDetailsContainer } from './Item';
 import FilterSearchContainer from './Filter/FilterSearchContainer';
 import Loading from './Load';
@@ -74,5 +75,20 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  fetchDataGroups: PropTypes.func.isRequired,
+  filter: PropTypes.shape({
+    searchQuery: PropTypes.string,
+  }).isRequired,
+  app: PropTypes.shape({
+    isFetching: PropTypes.bool,
+    groups: PropTypes.array,
+  }).isRequired,
+  itemDetails: PropTypes.shape({
+    isFetching: PropTypes.bool,
+    isOpen: PropTypes.bool,
+  }).isRequired,
+};
 
 export default App;
