@@ -42,7 +42,7 @@ class App extends Component {
     if (query !== '') {
       query = query.toLowerCase();
       return this.props.app.groups.filter(group => {
-        if (group.title.toLowerCase().indexOf(query) !== -1) {
+        if ((group.title.toLowerCase().indexOf(query) !== -1) && parseInt(group.year, 10) >= 2000) {
           return group;
         }
         return false;
