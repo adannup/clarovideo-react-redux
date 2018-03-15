@@ -69,7 +69,6 @@ class App extends Component {
                 <div className="mt-3">
                   <ItemList
                     groups={this.filterSearchState()}
-                    onClickItemDetail={this.onClickItemDetail}
                   />
                 </div>
               </div>
