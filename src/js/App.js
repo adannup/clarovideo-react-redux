@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { ItemList, ItemDetailsContainer } from './Item';
 import FilterSearchContainer from './Filter/FilterSearchContainer';
-import fetchData from './Utils';
 import Loading from './Load';
 import './App.scss';
 
@@ -13,7 +12,6 @@ class App extends Component {
   }
 
   componentWillMount() {
-    const uri = 'https://mfwkweb-api.clarovideo.net//services/content/list';
     const params = {
       api_version: 'v5.8',
       authpn: 'webclient',
@@ -34,9 +32,7 @@ class App extends Component {
       node_id: '9869',
     };
 
-    fetchData(uri, params)
-      .then(data => data.response.groups)
-      .then(groups => this.props.fetchDataGroups(groups));
+    this.props.fetchDataGroups(params);
   }
 
   filterSearchState() {

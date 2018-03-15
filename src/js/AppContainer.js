@@ -9,9 +9,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchDataGroups: groups => {
+  fetchDataGroups: params => {
     dispatch(requestData());
-    dispatch(fetchDataGroups(groups));
+    dispatch(fetchDataGroups(params));
   },
   requestData: () => dispatch(requestData()),
 });
