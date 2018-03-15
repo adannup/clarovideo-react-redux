@@ -22,8 +22,8 @@ class FilterSearch extends Component {
   }
 }
 
-// FilterSearch.propTypes = {
-//   onChangeSearch: PropTypes.func.isRequired,
-// };
+FilterSearch.propTypes = {
+  onFilterSearch: PropTypes.func.isRequired,
+};
 
 export default FilterSearch;
